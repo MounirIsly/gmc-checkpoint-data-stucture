@@ -1,0 +1,31 @@
+function sumOfDisctinct(arr1,arr2,uniqueArr) {
+  uniqueArr = []
+  
+  for(var i=0; i<arr1.length; i++) {
+      count = 0;
+      for(var j=0; j<arr2.length; j++) {
+          if(arr1[i] === arr2[j]) {
+              arr2.splice(j,1);
+              j--;
+              count = 1;
+          }
+      }
+
+      if(count == 0) {
+          uniqueArr.push(arr1[i]);
+      }
+  }
+  uniqueArr.push(arr2);
+  return uniqueArr;
+}
+var arr1 = [2, 4, 1, 9, 3];
+  
+var arr2 = [3, 1, 7, 9];
+  
+var uniqueArr = [];
+var sum = sumOfDisctinct(arr1,arr2,uniqueArr).flat().reduce((curr, acc)=>curr+acc)
+  
+console.log("Disctinct elements in the two arrays are:");
+console.log(sumOfDisctinct(arr1,arr2,uniqueArr).flat());
+console.log("Sum of disctinct elements in the two arrays are:");
+console.log(sum);
